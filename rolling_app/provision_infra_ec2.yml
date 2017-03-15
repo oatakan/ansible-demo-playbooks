@@ -3,5 +3,5 @@
   vars_files:
     - nodes-ec2.yml
   roles:
-    - oatakan.ec2
-    - michaellessard.nginx
+  - ansible-role-rhn
+  - Aplyca.AnsibleTower
