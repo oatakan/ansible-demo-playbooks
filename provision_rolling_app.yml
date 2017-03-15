@@ -17,10 +17,10 @@
     http_port: "{{':'}}80"
   pre_tasks:
   - debug: var=http_port
-  - name: Populate backend servers
-    set_fact:
-      haproxy_backend_servers2: "{{ haproxy_backend_servers2|default([]) + [ {'name': hostvars[item].ansible_hostname, 'address': hostvars[item].ansible_default_ipv4.address ] }}"
-    with_items: "{{ groups.tag_role_webservers }}"
-  - debug: var=haproxy_backend_servers2
+#  - name: Populate backend servers
+#    set_fact:
+#      haproxy_backend_servers2: "{{ haproxy_backend_servers2|default([]) + [ {'name': hostvars[item].ansible_hostname, 'address': hostvars[item].ansible_default_ipv4.address ] }}"
+#    with_items: "{{ groups.tag_role_webservers }}"
+#  - debug: var=haproxy_backend_servers2
   roles:
   - geerlingguy.haproxy
