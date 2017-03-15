@@ -10,6 +10,7 @@
     become: yes
     become_user: root
     with_items: "{{ groups.tag_role_lbservers }}"
+    ignore_errors: yes
 
   roles:
   - geerlingguy.nginx
@@ -21,3 +22,4 @@
     become: yes
     become_user: root
     with_items: "{{ groups.tag_role_lbservers }}"
+    ignore_errors: yes
