@@ -15,3 +15,15 @@
   become_user: root
   roles:
   - geerlingguy.haproxy
+
+- hosts: tag_role_webservers:&tag_app_rolling_app
+  become: yes
+  become_user: root
+
+  tasks:
+  - name: enable the server in haproxy
+    haproxy: 'state=enabled host={{ inventory_hostname }} socket=/var/lib/haproxy/stats'
+    delegate_to: "{{ item }}"
+    become: yes
+    become_user: root
+    with_items: "{{ groups.tag_role_lbservers }}"
