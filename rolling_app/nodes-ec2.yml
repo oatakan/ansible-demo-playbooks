@@ -1,0 +1,7 @@
+---
+nodes:
+  - name: web1
+    role: webservers
+    instance_type: t2.micro
+    image: ami-af4333cf #centos7
+    disk_size: 10
