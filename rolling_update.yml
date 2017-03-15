@@ -5,21 +5,15 @@
 
   pre_tasks:
   - name: disable the server in haproxy
-    command: echo "disable server {{ inventory_hostname }}" | socat stdio /var/lib/haproxy/stats
+    command: echo "disable server habackend/{{ inventory_hostname }}" | socat stdio /var/lib/haproxy/stats
     delegate_to: "{{ item }}"
-    become: yes
-    become_user: root
     with_items: "{{ groups.tag_role_lbservers }}"
-    ignore_errors: yes
 
   roles:
   - geerlingguy.nginx
 
   post_tasks:
   - name: enable the server in haproxy
-    command: echo "enable server {{ inventory_hostname }}" | socat stdio /var/lib/haproxy/stats
+    command: echo "enable server habackend/{{ inventory_hostname }}" | socat stdio /var/lib/haproxy/stats
     delegate_to: "{{ item }}"
-    become: yes
-    become_user: root
     with_items: "{{ groups.tag_role_lbservers }}"
-    ignore_errors: yes

@@ -22,8 +22,6 @@
 
   tasks:
   - name: enable the server in haproxy
-    haproxy: 'state=enabled host={{ inventory_hostname }} socket=/var/lib/haproxy/stats'
+    command: echo "enable server habackend/{{ inventory_hostname }}" | socat stdio /var/lib/haproxy/stats
     delegate_to: "{{ item }}"
-    become: yes
-    become_user: root
     with_items: "{{ groups.tag_role_lbservers }}"
