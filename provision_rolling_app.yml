@@ -19,8 +19,8 @@
   - debug: var=http_port
   - name: Populate backend servers
     set_fact:
-      haproxy_backend_servers: "{{ haproxy_backend_servers|default([]) + [ {'name': hostvars[item].ansible_hostname, 'address': hostvars[item].ansible_default_ipv4.address|join(http_port) ] }}"
+      haproxy_backend_serverss: "{{ haproxy_backend_servers|default([]) + [ {'name': hostvars[item].ansible_hostname, 'address': hostvars[item].ansible_default_ipv4.address ] }}"
     with_items: "{{ groups.tag_role_webservers }}"
-  - debug: var=haproxy_backend_servers
+  - debug: var=haproxy_backend_servers2
   roles:
   - geerlingguy.haproxy
