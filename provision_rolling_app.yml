@@ -13,12 +13,10 @@
 - hosts: tag_role_lbservers:&tag_app_rolling_app
   become: yes
   become_user: root
-  vars:
-    http_port: "{{':'}}80"
   pre_tasks:
   - name: Populate backend servers
     set_fact:
-      haproxy_backend_servers: "{{ haproxy_backend_servers|default([]) + [ {'name': hostvars[item].ansible_hostname, 'address': hostvars[item].ansible_default_ipv4.address + http_port ] }}"
+      haproxy_backend_servers: "{{ haproxy_backend_servers|default([]) + [ {'name': hostvars[item].ansible_hostname, 'address': hostvars[item].ansible_default_ipv4.address + ':80' ] }}"
     with_items: "{{ groups.tag_role_webservers }}"
   - debug: var=haproxy_backend_servers
   roles:
