@@ -1,7 +1,5 @@
 - hosts: localhost
   become: no
-  vars:
-    environment: test
   vars_files:
     - "nodes-ec2.yml"
   roles:
