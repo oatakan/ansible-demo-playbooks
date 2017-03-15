@@ -5,7 +5,7 @@
 
   pre_tasks:
   - name: disable the server in haproxy
-    haproxy: 'state=disabled host={{ inventory_hostname }} socket=/var/lib/haproxy/stats'
+    haproxy: state=disabled host={{ inventory_hostname }} socket=/var/lib/haproxy/stats
     delegate_to: "{{ item }}"
     become: yes
     become_user: root
@@ -17,7 +17,7 @@
 
   post_tasks:
   - name: enable the server in haproxy
-    haproxy: 'state=enabled host={{ inventory_hostname }} socket=/var/lib/haproxy/stats'
+    haproxy: state=enabled host={{ inventory_hostname }} socket=/var/lib/haproxy/stats
     delegate_to: "{{ item }}"
     become: yes
     become_user: root
