@@ -1,3 +1,4 @@
 - src: michaellessard.nginx
 
 - src: https://github.com/oatakan/ansible-role-ec2
+  name: oatakan.ec2
