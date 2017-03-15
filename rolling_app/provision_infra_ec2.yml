@@ -3,4 +3,4 @@
   vars_files:
     - "nodes-ec2.yml"
   roles:
-    - ansible-role-ec2
+  - ansible-role-ec2
