@@ -13,15 +13,11 @@
 - hosts: tag_role_lbservers:&tag_app_rolling_app
   become: yes
   become_user: root
+  pre_tasks:
+  - name: Populate backend servers
+    set_fact:
+      haproxy_backend_servers: "{{ haproxy_backend_servers|default([]) + [ {'name': item, 'address': item} ] }}"
+    with_items: "{{ groups.tag_role_webservers }}"
+  - debug: var=haproxy_backend_servers
   roles:
   - geerlingguy.haproxy
-
-- hosts: tag_role_webservers:&tag_app_rolling_app
-  become: yes
-  become_user: root
-
-  tasks:
-  - name: enable the server in haproxy
-    command: echo "enable server habackend/{{ inventory_hostname }}" | socat stdio /var/lib/haproxy/stats
-    delegate_to: "{{ item }}"
-    with_items: "{{ groups.tag_role_lbservers }}"
