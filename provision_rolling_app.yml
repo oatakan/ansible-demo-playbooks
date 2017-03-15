@@ -15,8 +15,13 @@
   become_user: root
   vars:
     http_port: "{{':'}}80"
+    haproxy_backend_servers:
+    - name: web1
+      address: "{{groups[tag_role_webservers][0]}}{{http_port}}"
+    - name: web2
+      address: "{{groups[tag_role_webservers][1]}}{{http_port}}"
   pre_tasks:
-  - debug: var=http_port
+  - debug: var=haproxy_backend_servers
 #  - name: Populate backend servers
 #    set_fact:
 #      haproxy_backend_servers2: "{{ haproxy_backend_servers2|default([]) + [ {'name': hostvars[item].ansible_hostname, 'address': hostvars[item].ansible_default_ipv4.address ] }}"
