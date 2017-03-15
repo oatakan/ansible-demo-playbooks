@@ -3,4 +3,4 @@
   vars_files:
     - nodes-ec2.yml
   roles:
-    - ansible-role-ec2
+    - {role: ansible-role-ec2, ec2_key_name: ansible-oatakan, ec2_region: us-east-1, ec2_vpc_id: vpc-489ffb2e, ec2_vpc_subnet_id: subnet-9b96c6b6 }
