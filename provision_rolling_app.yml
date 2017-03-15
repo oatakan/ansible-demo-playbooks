@@ -17,9 +17,9 @@
     http_port: "{{':'}}80"
     haproxy_backend_servers:
     - name: web1
-      address: "{{groups[tag_role_webservers][0]}}{{http_port}}"
+      address: "{{groups['tag_role_webservers'][0]}}{{http_port}}"
     - name: web2
-      address: "{{groups[tag_role_webservers][1]}}{{http_port}}"
+      address: "{{groups['tag_role_webservers'][1]}}{{http_port}}"
   pre_tasks:
   - debug: var=haproxy_backend_servers
 #  - name: Populate backend servers
