@@ -1,0 +1,17 @@
+- hosts: tag_role_dbservers:&tag_app_rolling_app
+  become: yes
+  become_user: root
+  roles:
+  - geerlingguy.mysql
+
+- hosts: tag_role_webservers:&tag_app_rolling_app
+  become: yes
+  become_user: root
+  roles:
+  - geerlingguy.nginx
+
+- hosts: tag_role_lbservers:&tag_app_rolling_app
+  become: yes
+  become_user: root
+  roles:
+  - geerlingguy.haproxy

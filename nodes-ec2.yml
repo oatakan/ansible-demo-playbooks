@@ -1,7 +1,25 @@
 ---
 nodes:
+  - name: db
+    role: dbservers
+    app_name: rolling_app
+    instance_type: t2.micro
+    image: ami-85241def #rhel7
+    disk_size: 10
   - name: web1
     role: webservers
+    app_name: rolling_app
+    instance_type: t2.micro
+    image: ami-85241def #rhel7
+    disk_size: 10
+  - name: web2
+    role: webservers
+    app_name: rolling_app
+    instance_type: t2.micro
+    image: ami-85241def #rhel7
+    disk_size: 10
+  - name: haproxy
+    role: lbservers
     app_name: rolling_app
     instance_type: t2.micro
     image: ami-85241def #rhel7
