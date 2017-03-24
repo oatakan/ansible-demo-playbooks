@@ -13,6 +13,5 @@
 
     - name: terminate instances
       ec2:
-        state: 'absent'
-        instance_ids: '{{ item.id }}'
-      with_items: "{{ ec2_instances.instances }}"
+        state: "absent"
+        instance_ids: "{{ ec2_instances.instances | map(attribute='id') | list }}"
