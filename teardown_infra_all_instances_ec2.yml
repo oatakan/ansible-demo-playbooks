@@ -8,12 +8,14 @@
         region: "{{ ec2_region }}"
         filters:
           vpc-id: "{{ ec2_vpc_id }}"
-          "tag:role": dbservers
-          "tag:role": webservers
-          "tag:role": lbservers
           "tag:app": rolling_app
       register: ec2_instances
 
     - debug:
         var: item.id
       with_items: "{{ ec2_instances.instances }}"
+
+#    - name: terminate instances
+#      ec2:
+#        state: 'absent'
+#        instance_ids: '{{ ec2.instance_ids }}'
