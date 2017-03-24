@@ -15,4 +15,5 @@
       register: ec2_instances
 
     - debug:
-        msg: "{{ ec2_instances }}"
+        msg: "{{ item.id }}"
+      with_items: "{{ ec2_instances.instances }}"
