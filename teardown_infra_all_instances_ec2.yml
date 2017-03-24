@@ -1,7 +1,5 @@
 - hosts: localhost
   become: no
-  vars:
-    ec2_exact_count: 0
   tasks:
     - name: get ec2 instance information
       ec2_remote_facts:
@@ -13,5 +11,6 @@
 
     - name: terminate instances
       ec2:
+        region: "{{ ec2_region }}"
         state: "absent"
         instance_ids: "{{ ec2_instances.instances | map(attribute='id') | list }}"
