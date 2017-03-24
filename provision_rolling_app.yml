@@ -24,7 +24,7 @@
   - debug: var=haproxy_backend_servers
   - name: Populate backend servers
     set_fact:
-      haproxy_backend_servers2: "{{ haproxy_backend_servers2|default([]) + [ {'name': hostvars[item].ansible_hostname, 'address': hostvars[item].default_ipv4_addresses + http_port } ] }}"
+      haproxy_backend_servers2: "{{ haproxy_backend_servers2|default([]) + [ {'name': hostvars[item].ansible_hostname, 'address': item + http_port } ] }}"
     with_items: "{{ groups.tag_role_webservers }}"
   - debug: var=haproxy_backend_servers2
   roles:
