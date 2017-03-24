@@ -11,7 +11,7 @@
           "tag:role": dbservers
           "tag:role": webservers
           "tag:role": lbservers
-          "tag:app": dbservers
+          "tag:app": rolling_app
       register: ec2_instances
 
     - debug:
