@@ -5,22 +5,48 @@ nodes:
     app_name: rolling_app
     instance_type: t2.micro
     image: ami-85241def #rhel7
-    disk_size: 10
+    volumes:
+      - device_name: /dev/sda1
+        volume_type: gp2
+        volume_size: 10
+        delete_on_termination: true
   - name: web1
     role: webservers
     app_name: rolling_app
     instance_type: t2.micro
     image: ami-85241def #rhel7
-    disk_size: 10
+    volumes:
+      - device_name: /dev/sda1
+        volume_type: gp2
+        volume_size: 10
+        delete_on_termination: true
   - name: web2
     role: webservers
     app_name: rolling_app
     instance_type: t2.micro
     image: ami-85241def #rhel7
-    disk_size: 10
+    volumes:
+      - device_name: /dev/sda1
+        volume_type: gp2
+        volume_size: 10
+        delete_on_termination: true
+  - name: web3
+    role: webservers
+    app_name: rolling_app
+    instance_type: t2.micro
+    image: ami-85241def #rhel7
+    volumes:
+      - device_name: /dev/sda1
+        volume_type: gp2
+        volume_size: 10
+        delete_on_termination: true
   - name: haproxy
     role: lbservers
     app_name: rolling_app
     instance_type: t2.micro
     image: ami-85241def #rhel7
-    disk_size: 10
+    volumes:
+      - device_name: /dev/sda1
+        volume_type: gp2
+        volume_size: 10
+        delete_on_termination: true

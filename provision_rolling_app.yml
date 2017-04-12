@@ -1,4 +1,4 @@
-- hosts: tag_role_dbservers:&tag_app_rolling_app
+- hosts: tag_role_dbservers:&tag_app_rolling_app:&{{ environment }}
   become: yes
   become_user: root
   roles:
