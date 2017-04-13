@@ -1,6 +1,8 @@
-- hosts: tag_role_dbservers:&tag_app_rolling_app:&{{ environment }}
+- hosts: tag_role_dbservers:&tag_app_rolling_app:&"{{ environment }}"
   become: yes
   become_user: root
+  vars:
+    environment: test
   roles:
   - geerlingguy.mysql
 
