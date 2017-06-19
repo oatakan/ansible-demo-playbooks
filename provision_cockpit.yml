@@ -1,0 +1,3 @@
+- hosts: all
+  roles:
+  - { role: while-true-do.cockpit, cockpit_packages: [ 'cockpit' ] }

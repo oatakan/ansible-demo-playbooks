@@ -9,3 +9,5 @@
 - src: geerlingguy.mysql
 
 - src: geerlingguy.haproxy
+
+- src: while-true-do.cockpit
