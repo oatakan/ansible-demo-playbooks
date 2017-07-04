@@ -1,0 +1,20 @@
+---
+nodes:
+  - name: orasi
+    role: oracle-single-instance
+    app_name: oracle-si-demo
+    instance_type: t2.medium
+    image: ami-85241def #rhel7
+    volumes:
+      - device_name: /dev/sda1
+        volume_type: gp2
+        volume_size: 10
+        delete_on_termination: true
+      - device_name: /dev/sdb1
+        volume_type: gp2
+        volume_size: 50
+        delete_on_termination: true
+      - device_name: /dev/sdc1
+        volume_type: gp2
+        volume_size: 50
+        delete_on_termination: true
