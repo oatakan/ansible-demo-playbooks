@@ -4,7 +4,7 @@
 - src: https://github.com/oatakan/ansible-role-vmware
   version: origin/master
 
-- src: https://github.com/oravirt/ansible-oracle
+- src: https://github.com/oatakan/ansible-oracle
   version: origin/master
   name: ansible-oracle
 
