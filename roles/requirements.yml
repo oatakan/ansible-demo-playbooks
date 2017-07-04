@@ -6,6 +6,7 @@
 
 - src: https://github.com/oravirt/ansible-oracle
   version: origin/master
+  name: ansible-oracle
 
 - src: geerlingguy.nginx
 
