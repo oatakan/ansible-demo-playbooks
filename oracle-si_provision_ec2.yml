@@ -1,0 +1,8 @@
+- hosts: tag_role_oracle-single-instance:&tag_app_oracle-si-demo
+  become: yes
+  become_user: root
+  roles:
+  - ansible-oracle/roles/common
+  - ansible-oracle/roles/orahost
+  - ansible-oracle/roles/oraswdb-install
+  - ansible-oracle/roles/oradb-create
