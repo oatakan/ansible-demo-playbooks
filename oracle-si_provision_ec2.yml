@@ -1,4 +1,4 @@
-- hosts: tag_role_oracle-single-instance:&tag_app_oracle-si-demo
+- hosts: tag_role_oracle-single-instance-v2:&tag_app_oracle-si-demo
   become: yes
   become_user: root
   roles:
