@@ -13,32 +13,32 @@
   - name: Create storage account
     azure_rm_storageaccount:
       resource_group: Testing
-      name: testaccount001
+      name: ora_testaccount001
       account_type: Standard_LRS
 
   - name: Create virtual network
     azure_rm_virtualnetwork:
       resource_group: Testing
-      name: testvn001
+      name: ora_testvn001
       address_prefixes: "10.10.0.0/16"
 
   - name: Add subnet
     azure_rm_subnet:
       resource_group: Testing
-      name: subnet001
+      name: ora_subnet001
       address_prefix: "10.10.0.0/24"
-      virtual_network: testvn001
+      virtual_network: ora_testvn001
 
   - name: Create public ip
     azure_rm_publicipaddress:
       resource_group: Testing
       allocation_method: Static
-      name: publicip001
+      name: ora_publicip001
 
   - name: Create security group that allows SSH
     azure_rm_securitygroup:
       resource_group: Testing
-      name: secgroup001
+      name: ora_secgroup001
       rules:
         - name: SSH
           protocol: Tcp
@@ -50,23 +50,23 @@
   - name: Create NIC
     azure_rm_networkinterface:
       resource_group: Testing
-      name: testnic001
-      virtual_network: testvn001
-      subnet: subnet001
-      public_ip_name: publicip001
-      security_group: secgroup001
+      name: ora_testnic001
+      virtual_network: ora_testvn001
+      subnet: ora_subnet001
+      public_ip_name: ora_publicip001
+      security_group: ora_secgroup001
 
   - name: Create virtual machine
     azure_rm_virtualmachine:
       resource_group: Testing
-      name: testvm001
+      name: ora_testvm001
       vm_size: Standard_D1
-      storage_account: testaccount001
-      storage_container: testvm001
-      storage_blob: testvm001.vhd
+      storage_account: ora_testaccount001
+      storage_container: ora_testvm001
+      storage_blob: ora_testvm001.vhd
       admin_username: admin
       admin_password: Password!
-      network_interfaces: testnic001
+      network_interfaces: ora_testnic001
       image:
         offer: CentOS
         publisher: OpenLogic
