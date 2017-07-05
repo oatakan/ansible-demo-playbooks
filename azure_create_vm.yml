@@ -66,7 +66,7 @@
       storage_container: oratestvm001
       storage_blob: oratestvm001.vhd
       admin_username: oatakan
-      ssh_password_enabled: no
+      admin_password: "$vYbfvF844RgdPgT"
       network_interfaces: oratestnic001
       image:
         offer: CentOS
