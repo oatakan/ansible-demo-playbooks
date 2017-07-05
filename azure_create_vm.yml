@@ -9,6 +9,7 @@
       tags:
         testing: testing
         delete: never
+    ignore_errors: yes
 
   - name: Create storage account
     azure_rm_storageaccount:
