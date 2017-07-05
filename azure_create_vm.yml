@@ -14,32 +14,32 @@
   - name: Create storage account
     azure_rm_storageaccount:
       resource_group: Testing
-      name: ora_testaccount001
+      name: oratestaccount001
       account_type: Standard_LRS
 
   - name: Create virtual network
     azure_rm_virtualnetwork:
       resource_group: Testing
-      name: ora_testvn001
+      name: oratestvn001
       address_prefixes: "10.10.0.0/16"
 
   - name: Add subnet
     azure_rm_subnet:
       resource_group: Testing
-      name: ora_subnet001
+      name: orasubnet001
       address_prefix: "10.10.0.0/24"
-      virtual_network: ora_testvn001
+      virtual_network: oratestvn001
 
   - name: Create public ip
     azure_rm_publicipaddress:
       resource_group: Testing
       allocation_method: Static
-      name: ora_publicip001
+      name: orapublicip001
 
   - name: Create security group that allows SSH
     azure_rm_securitygroup:
       resource_group: Testing
-      name: ora_secgroup001
+      name: orasecgroup001
       rules:
         - name: SSH
           protocol: Tcp
@@ -51,23 +51,23 @@
   - name: Create NIC
     azure_rm_networkinterface:
       resource_group: Testing
-      name: ora_testnic001
-      virtual_network: ora_testvn001
-      subnet: ora_subnet001
-      public_ip_name: ora_publicip001
-      security_group: ora_secgroup001
+      name: oratestnic001
+      virtual_network: oratestvn001
+      subnet: orasubnet001
+      public_ip_name: orapublicip001
+      security_group: orasecgroup001
 
   - name: Create virtual machine
     azure_rm_virtualmachine:
       resource_group: Testing
-      name: ora_testvm001
+      name: oratestvm001
       vm_size: Standard_D1
-      storage_account: ora_testaccount001
-      storage_container: ora_testvm001
-      storage_blob: ora_testvm001.vhd
+      storage_account: oratestaccount001
+      storage_container: oratestvm001
+      storage_blob: oratestvm001.vhd
       admin_username: admin
       admin_password: Password!
-      network_interfaces: ora_testnic001
+      network_interfaces: oratestnic001
       image:
         offer: CentOS
         publisher: OpenLogic
