@@ -7,3 +7,4 @@
       name: Testing
       location: southcentralus
       state: absent
+      force: yes
