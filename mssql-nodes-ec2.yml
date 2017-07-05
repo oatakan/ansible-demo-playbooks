@@ -2,7 +2,7 @@
 nodes:
   - name: mssql
     role: mssql-on-windows
-    app_name: oracle-si-demo
+    app_name: mssql-demo
     instance_type: t2.large
     image: ami-e196b0f7 #windows 2012 r2
     volumes:
