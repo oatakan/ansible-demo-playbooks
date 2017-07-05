@@ -1,0 +1,8 @@
+- hosts: localhost
+  become: no
+  vars:
+    ansible_port: 5986
+  vars_files:
+    - mssql-nodes-ec2.yml
+  roles:
+    - ansible-role-ec2
