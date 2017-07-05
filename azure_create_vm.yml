@@ -66,7 +66,6 @@
       storage_container: oratestvm001
       storage_blob: oratestvm001.vhd
       admin_username: oatakan
-      admin_password: Password!
       network_interfaces: oratestnic001
       image:
         offer: CentOS
