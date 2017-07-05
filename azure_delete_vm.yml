@@ -1,0 +1,9 @@
+- hosts: localhost
+  become: no
+
+  tasks:
+  - name: Delete a resource group
+    azure_rm_resourcegroup:
+      name: Testing
+      location: southcentralus
+      state: absent
