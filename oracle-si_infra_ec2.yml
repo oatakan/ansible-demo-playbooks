@@ -4,4 +4,3 @@
     - oracle-si-nodes-ec2.yml
   roles:
     - ansible-role-ec2
-    - create_user
