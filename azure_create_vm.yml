@@ -2,6 +2,14 @@
   become: no
 
   tasks:
+  - name: Create a resource group
+    azure_rm_resourcegroup:
+      name: Testing
+      location: southcentralus
+      tags:
+        testing: testing
+        delete: never
+
   - name: Create storage account
     azure_rm_storageaccount:
       resource_group: Testing
