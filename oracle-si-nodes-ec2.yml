@@ -4,7 +4,7 @@ nodes:
     role: oracle-single-instance-v2
     app_name: oracle-si-demo
     instance_type: t2.medium
-    image: ami-85241def #rhel7
+    image: ami-61bbf104 #centos7
     volumes:
       - device_name: /dev/xvda
         volume_type: gp2
