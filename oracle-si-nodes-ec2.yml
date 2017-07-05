@@ -3,7 +3,7 @@ nodes:
   - name: orasi-v2
     role: oracle-single-instance-v2
     app_name: oracle-si-demo
-    instance_type: t2.medium
+    instance_type: t2.large
     image: ami-61bbf104 #centos7
     volumes:
       - device_name: /dev/xvda
