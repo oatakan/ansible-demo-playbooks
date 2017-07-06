@@ -2,6 +2,7 @@
   become: no
   vars:
     ansible_port: 5986
+    windows: yes
   vars_files:
     - mssql-nodes-ec2.yml
   roles:

@@ -1,0 +1,8 @@
+---
+- name: Generate SSH keys
+  hosts: all
+
+  tasks:
+  - name: Generate a key
+    openssl_privatekey:
+      path: /tmp/cvx.com.pem
