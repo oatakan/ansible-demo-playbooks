@@ -5,3 +5,7 @@
   - ansible-oracle/roles/orahost
   - ansible-oracle/roles/oraswdb-install
   - ansible-oracle/roles/oradb-create
+
+  tasks:
+  - name: run my shell script after oracle
+    command: hostname
