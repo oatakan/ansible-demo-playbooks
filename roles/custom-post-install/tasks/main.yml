@@ -1,0 +1,5 @@
+- name: run a command
+  command: hostname
+
+- name: another task
+  command: hostname

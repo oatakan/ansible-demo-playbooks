@@ -1,5 +1,31 @@
 - hosts:  tag_role_oracle_single_instance_v2:&tag_app_oracle_si_demo
   become: yes
-  become_user: root
-  roles:
-  - ansible-oracle/roles/oraswgi-opatch
+  serial: 1
+  var:
+    ORACLE_HOME: /oracle/home
+    gold_image_file: /mnt/some_file.tar.gz
+
+  pre_tasks:
+    - name: find all instances
+      command: find_instance_command
+      register: database_instances
+
+    - name: bring down all oracle instances
+      command: bring_down_instance
+      with_items: "{{ database_instances.stdout }}"
+
+    - name: remove softlink to HOME
+      command: rm {{ ORACLE_HOME }}
+
+  tasks:
+    - name: untar gold image
+      unarchive:
+        src: "{{ gold_image_file }}"
+        dst: /tmp
+
+    - name: run installer command
+      command: /root/run_installer {{ ORACLE_HOME }}
+
+  post_tasks:
+    - name: run cat bundle
+      command: cat_bundle
