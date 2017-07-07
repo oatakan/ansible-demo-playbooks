@@ -1,6 +1,5 @@
 - hosts:  tag_role_oracle_single_instance_v2:&tag_app_oracle_si_demo
   become: yes
-  become_user: root
   roles:
   - ansible-oracle/roles/common
   - ansible-oracle/roles/orahost
