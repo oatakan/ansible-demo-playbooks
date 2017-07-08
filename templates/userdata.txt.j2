@@ -1,6 +1,5 @@
 <powershell>
 $admin = [adsi]("WinNT://./administrator, user")
 $admin.PSBase.Invoke("SetPassword", "{{ ansible_password }}")
-(new-object net.webclient).DownloadFile('https://raw.githubusercontent.com/ansible/ansible/devel/examples/scripts/ConfigureRemotingForAnsible.ps1','c:\ConfigureRemotingForAnsible.ps1')
-powershell.exe -File C:\ConfigureRemotingForAnsible.ps1 -EnableCredSSP
+#Invoke-Expression ((New-Object System.Net.Webclient).DownloadString('https://raw.githubusercontent.com/ansible/ansible/devel/examples/scripts/ConfigureRemotingForAnsible.ps1'))
 </powershell>
