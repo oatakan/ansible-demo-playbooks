@@ -6,4 +6,7 @@ $command = "C:\ConfigureRemotingForAnsible.ps1 -EnableCredSSP"
 Set-ExecutionPolicy Bypass -Force
 Unblock-File C:\ConfigureRemotingForAnsible.ps1
 Invoke-Expression $command
+Move-Item C:\ConfigureRemotingForAnsible.ps1 C:\ConfigureRemotingForAnsible2.ps1
+$command = "C:\ConfigureRemotingForAnsible2.ps1 -EnableCredSSP"
+Invoke-Expression $command
 </powershell>
