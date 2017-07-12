@@ -6,6 +6,7 @@
         region: "{{ ec2_region }}"
         filters:
           vpc-id: "{{ ec2_vpc_id }}"
+          subnet-id: "{{ ec2_vpc_subnet_id }}"
           #"tag:app": rolling_app
       register: ec2_instances
 
