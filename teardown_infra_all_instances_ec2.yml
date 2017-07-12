@@ -6,7 +6,7 @@
         region: "{{ ec2_region }}"
         filters:
           vpc-id: "{{ ec2_vpc_id }}"
-          "tag:app": rolling_app
+          #"tag:app": rolling_app
       register: ec2_instances
 
     - name: terminate instances
