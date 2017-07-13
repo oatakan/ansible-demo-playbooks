@@ -10,7 +10,7 @@
         organization: "Demo"
         state: present
         variables: "test=value"
-        tower_config_file: "/etc/tower/tower_cli.cfg"
+        #tower_config_file: "/etc/tower/tower_cli.cfg"
       delegate_to: localhost
 
     - name: test
