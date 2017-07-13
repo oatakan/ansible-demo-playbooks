@@ -6,11 +6,10 @@
   tasks:
     - name: Add tower inventory
       tower_inventory:
-        name: "poc-a-patching"
+        name: "poc-b-patching"
         organization: "Demo"
         state: present
-        variables: "test=value"
-        tower_config_file: "~/.tower_cli.cfg"
+      delegate_to: 127.0.0.1
 
     - name: test
       command: hostname
