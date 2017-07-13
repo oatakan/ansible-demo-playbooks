@@ -11,7 +11,7 @@
         state: present
         variables: "test=value"
         #tower_config_file: "/root/tower_cli.cfg"
-      delegate_to: 127.0.0.1
+      #delegate_to: 127.0.0.1
 
     - name: test
       command: hostname
