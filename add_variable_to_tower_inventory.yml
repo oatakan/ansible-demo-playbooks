@@ -4,14 +4,14 @@
   gather_facts: no
 
   tasks:
-#  - name: Add tower inventory
-#    tower_inventory:
-#      name: "poc-a-patching"
-#      organization: "Demo"
-#      state: present
-#      variables: "test=value"
+  - name: Add tower inventory
+    tower_inventory:
+      name: "poc-a-patching"
+      organization: "Demo"
+      state: present
+      variables: "test=value"
 #      tower_config_file: "/root/tower_cli.cfg"
-#    delegate_to: 127.0.0.1
+    delegate_to: 127.0.0.1
 
     - name: test
       command: hostname
