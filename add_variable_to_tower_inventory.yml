@@ -1,6 +1,7 @@
 ---
 - name: Add value to tower inventory
   hosts: all
+  gather_facts: no
 
   tasks:
 #  - name: Add tower inventory
