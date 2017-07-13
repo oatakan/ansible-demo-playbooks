@@ -9,6 +9,7 @@
         name: "poc-b-patching"
         organization: "Demo"
         state: present
+        tower_config_file: "~/tower_cli.cfg"
       delegate_to: 127.0.0.1
 
     - name: test
