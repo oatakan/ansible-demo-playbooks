@@ -9,3 +9,4 @@
       organization: "Demo"
       state: present
       variables: "test=value"
+      tower_config_file: "/root/tower_cli.cfg"
