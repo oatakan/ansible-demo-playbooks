@@ -1,6 +1,6 @@
 ---
 - name: Add value to tower inventory
-  hosts: localhost
+  hosts: all
 
   tasks:
   - name: Add tower inventory
@@ -10,3 +10,4 @@
       state: present
       variables: "test=value"
       tower_config_file: "/root/tower_cli.cfg"
+    delegate_to: 127.0.0.1
