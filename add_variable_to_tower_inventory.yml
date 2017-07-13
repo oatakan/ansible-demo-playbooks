@@ -1,0 +1,11 @@
+---
+- name: Add value to tower inventory
+  hosts: localhost
+
+  tasks:
+  - name: Add tower inventory
+    tower_inventory:
+      name: "poc-a-patching"
+      organization: "Demo"
+      state: present
+      variables: "test=value"
