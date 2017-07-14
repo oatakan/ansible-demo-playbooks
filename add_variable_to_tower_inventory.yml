@@ -2,6 +2,10 @@
 - name: Add value to tower inventory
   hosts: all
   gather_facts: no
+  vars:
+    tower_hostname: "{{ lookup('env', 'VMWARE_HOST') | default('localhost') }}"
+    tower_username: "{{ lookup('env', 'VMWARE_USER') }}"
+    tower_password: "{{ lookup('env', 'VMWARE_PASSWORD') }}"
 
   tasks:
     - name: Add tower inventory
@@ -10,11 +14,34 @@
         organization: "demo"
         state: present
         variables: "abc_variable: xyz_value"
-        tower_host: "{{ lookup('env', 'VMWARE_HOST') | default('localhost') }}"
-        tower_username: "{{ lookup('env', 'VMWARE_USER') }}"
-        tower_password: "{{ lookup('env', 'VMWARE_PASSWORD') }}"
-      register: add_tower_inventory
+        tower_host: "{{ tower_hostname }}"
+        tower_username: "{{ tower_username }}"
+        tower_password: "{{ tower_password }}"
       delegate_to: 127.0.0.1
+
+    - name: Get inventory list
+      uri:
+        url: "https://{{ tower_hostname }}/api/v1/inventories"
+        method: GET
+        user: "{{ tower_username }}"
+        password: "{{ tower_password }}"
+        force_basic_auth: yes
+        validate_certs: no
+      register: tower_inventories
+
+    - name: read abc_variable from poc-a-patching inventory
+      debug:
+        var: tower_inventories
+
+    - name: Get inventory variables
+      uri:
+        url: "https://{{ tower_hostname }}/api/v1/inventories/{{ inventory_id }}/variable_data/"
+        method: GET
+        user: "{{ tower_username }}"
+        password: "{{ tower_password }}"
+        force_basic_auth: yes
+        validate_certs: no
+      register: add_tower_inventory
 
     - name: read abc_variable from poc-a-patching inventory
       debug:
