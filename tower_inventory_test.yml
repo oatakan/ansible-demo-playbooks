@@ -8,9 +8,12 @@
     tower_password: "{{ lookup('env', 'VMWARE_PASSWORD') }}"
 
   roles:
+     # if environment is not poc-a read the inventory_variables
      - role: tower_inventory_read_variables
        inventory_name: poc-a-patching
        when: ocp_env is undefined or ocp_env != 'poc-a'
+     # if environment is poc-a set the inventory_variables first
+     # then write variables to inventory
      - role: tower_inventory_write_variables
        inventory_name: poc-a-patching
        organization: demo
