@@ -13,8 +13,9 @@
         tower_host: "{{ lookup('env', 'VMWARE_HOST') | default('localhost') }}"
         tower_username: "{{ lookup('env', 'VMWARE_USER') }}"
         tower_password: "{{ lookup('env', 'VMWARE_PASSWORD') }}"
+      register: add_tower_inventory
       delegate_to: 127.0.0.1
 
     - name: read abc_variable from poc-a-patching inventory
       debug:
-        var: abc_variable
+        var: add_tower_inventory
