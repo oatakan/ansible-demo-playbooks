@@ -31,7 +31,7 @@
     - name: Add tower inventory
       tower_inventory:
         name: "poc-b-patching"
-        organization: "Demo"
+        organization: "demo"
         state: present
         tower_config_file: "~/tower_cli.cfg"
       delegate_to: 127.0.0.1
