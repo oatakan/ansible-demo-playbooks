@@ -34,5 +34,7 @@
         organization: "demo"
         state: present
         variables: "abc_variable: xyz_value"
-        tower_config_file: "~/tower_cli.cfg"
+        tower_host: "{{ lookup('env', 'VMWARE_HOST') | default('localhost') }}"
+        tower_username: "{{ lookup('env', 'VMWARE_USER') }}"
+        tower_password: "{{ lookup('env', 'VMWARE_PASSWORD') }}"
       delegate_to: 127.0.0.1
