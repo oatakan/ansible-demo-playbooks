@@ -32,7 +32,7 @@
 
     - name: debug tower_inventories by name
       debug:
-        msg: "{{ tower_inventories.json.results | map(attribute='name') }}"
+        msg: "{{ tower_inventories.json.results }}"
 
     - name: debug tower_inventory poc-a-patching id
       debug:
