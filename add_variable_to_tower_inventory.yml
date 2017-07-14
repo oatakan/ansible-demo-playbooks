@@ -30,6 +30,10 @@
       register: tower_inventories
       delegate_to: 127.0.0.1
 
+    - name: set inventory id for poc-a-patching
+      set_fact:
+        inventory_id: "{{ tower_inventories.json.results | selectattr('name', 'equalto', 'poc-a-patching') | map(attribute='id') | join }}"
+
     - name: debug tower_inventories by name
       debug:
         msg: "{{ tower_inventories.json.results | map(attribute='name') | join }}"
