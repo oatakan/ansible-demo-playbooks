@@ -1,0 +1,23 @@
+---
+- name: Add value to tower inventory
+  hosts: all
+  gather_facts: no
+  vars:
+    tower_hostname: "{{ lookup('env', 'VMWARE_HOST') | default('localhost') }}"
+    tower_username: "{{ lookup('env', 'VMWARE_USER') }}"
+    tower_password: "{{ lookup('env', 'VMWARE_PASSWORD') }}"
+
+  roles:
+     - role: tower_inventory_read_variables
+       inventory_name: poc-a-patching
+       when: ocp_env is undefined or ocp_env != 'poc-a'
+     - role: tower_inventory_write_variables
+       inventory_name: poc-a-patching
+       organization: demo
+       when: ocp_env is defined and ocp_env == 'poc-a'
+
+  post_tasks:
+    - name: debug variables from main playbook
+      debug:
+        var: inventory_variables
+      when: inventory_variables is defined

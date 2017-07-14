@@ -1,0 +1,5 @@
+tower_hostname: "{{ lookup('env', 'VMWARE_HOST') | default('localhost') }}"
+tower_username: "{{ lookup('env', 'VMWARE_USER') }}"
+tower_password: "{{ lookup('env', 'VMWARE_PASSWORD') }}"
+
+inventory_name: test

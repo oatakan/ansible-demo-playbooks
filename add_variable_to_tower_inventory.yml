@@ -34,10 +34,6 @@
       set_fact:
         inventory_id: "{{ tower_inventories.json.results | selectattr('name', 'equalto', 'poc-a-patching') | map(attribute='id') | join }}"
 
-    - name: debug tower_inventories by name
-      debug:
-        msg: "{{ tower_inventories.json.results | map(attribute='name') | join }}"
-
     - name: debug tower_inventory poc-a-patching id
       debug:
         msg: "{{ tower_inventories.json.results | selectattr('name', 'equalto', 'poc-a-patching') | map(attribute='id') | join }}"
