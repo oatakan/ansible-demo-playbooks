@@ -32,11 +32,11 @@
 
     - name: debug tower_inventories by name
       debug:
-        var: tower_inventories.json.results | map(attribute='username')
+        msg: "{{ tower_inventories.json.results | map(attribute='username') }}"
 
     - name: debug tower_inventory poc-a-patching id
       debug:
-        var: tower_inventories.json.results | selectattr("name", "equalto", "poc-a-patching") | map(attribute='id')
+        msg: "{{ tower_inventories.json.results | selectattr("name", "equalto", "poc-a-patching") | map(attribute='id') }}"
 
     - name: Get inventory variables
       uri:
