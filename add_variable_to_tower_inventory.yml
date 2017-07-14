@@ -21,7 +21,7 @@
         var: whoami_output
 
     - name: inventory list
-      command: tower-cli inventory list
+      shell: tower-cli inventory list
       register: inventory_output
       delegate_to: 127.0.0.1
 
