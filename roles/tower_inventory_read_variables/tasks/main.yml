@@ -29,7 +29,8 @@
   delegate_to: 127.0.0.1
 
 - name: set variables
-  set_fact: {"{{ inventory_name }}":"{{ get_inventory_variable }}"}
+  set_fact:
+    inventory_variables: "{{ get_inventory_variable.json }}"
 
 - name: debug variables
   debug:
