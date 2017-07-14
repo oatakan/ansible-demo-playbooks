@@ -14,6 +14,8 @@
      - role: tower_inventory_write_variables
        inventory_name: poc-a-patching
        organization: demo
+       inventory_variables:
+         - some_text: some_value
        when: ocp_env is defined and ocp_env == 'poc-a'
 
   post_tasks:
