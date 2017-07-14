@@ -33,4 +33,5 @@
     "{{ inventory_name }}": "{{ get_inventory_variable.json }}"
 
 - name: debug variables
+  debug:
     var: get_inventory_variable.json
