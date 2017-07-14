@@ -4,13 +4,29 @@
   gather_facts: no
 
   tasks:
-    - name: test
+    - name: hostname
       command: hostname
+      register: hostname_output
       delegate_to: 127.0.0.1
 
-    - name: test
+    - debug:
+        var: hostname_output
+
+    - name: whoami
       command: whoami
+      register: whoami_output
       delegate_to: 127.0.0.1
+
+    - debug:
+        var: whoami_output
+
+    - name: inventory list
+      command: tower-cli inventory list
+      register: inventory_output
+      delegate_to: 127.0.0.1
+
+    - debug:
+        var: inventory_output
 
     - name: Add tower inventory
       tower_inventory:
