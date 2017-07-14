@@ -16,7 +16,7 @@
        organization: demo
        inventory_variables:
          ocp_env: poc-a
-         some_text: some_value
+         some_text: some_other_value
        when: ocp_env is defined and ocp_env == 'poc-a'
 
   post_tasks:
