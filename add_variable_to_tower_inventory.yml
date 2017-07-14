@@ -30,8 +30,9 @@
 
     - name: Add tower inventory
       tower_inventory:
-        name: "poc-b-patching"
+        name: "poc-a-patching"
         organization: "demo"
         state: present
+        variables: "abc_variable=xyz_value"
         tower_config_file: "~/tower_cli.cfg"
       delegate_to: 127.0.0.1
