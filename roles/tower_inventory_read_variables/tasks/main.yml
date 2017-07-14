@@ -34,4 +34,4 @@
 
 - name: debug variables
   debug:
-    var: get_inventory_variable.json
+    var: inventory_variables
