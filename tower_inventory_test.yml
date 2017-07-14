@@ -15,9 +15,3 @@
        inventory_name: poc-a-patching,
        organization: demo,
        when: ocp_env is defined and ocp_env == 'poc-a' }
-
-  post_tasks:
-    - name: debug variables from main playbook
-      debug:
-        var: inventory_variables
-      when: inventory_variables is defined
