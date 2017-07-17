@@ -9,7 +9,7 @@
 
   roles:
      # if environment is not poc-a read the inventory_variables
-     - role: tower_inventory_read_variables
+     - role: oatakan.tower-inventory-read-variable
        inventory_name: poc-a-patching
        when: ocp_env is undefined or ocp_env != 'poc-a'
      # if environment is poc-a set the inventory_variables first

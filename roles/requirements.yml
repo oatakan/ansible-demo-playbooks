@@ -17,3 +17,5 @@
 - src: while-true-do.cockpit
 
 - src: geerlingguy.postgresql
+
+- src: oatakan.tower-inventory-read-variable
