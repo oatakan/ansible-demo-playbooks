@@ -19,3 +19,5 @@
 - src: geerlingguy.postgresql
 
 - src: oatakan.tower-inventory-read-variable
+
+- src: oatakan.tower-inventory-write-variable
