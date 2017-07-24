@@ -1,3 +1,11 @@
 - hosts: all
   roles:
   - { role: while-true-do.cockpit, cockpit_packages: [ 'cockpit' ] }
+
+  post_tasks:
+    - name: open port 9090 on firewall
+      firewalld:
+        zone: public
+        port: 9090/tcp
+        permanent: true
+        state: enabled

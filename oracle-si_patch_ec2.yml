@@ -1,4 +1,4 @@
-- hosts:  tag_role_oracle_single_instance_v2:&tag_app_oracle_si_demo
+- hosts: oracle_rac_data_center_hosts
   become: yes
   serial: 1
   var:
@@ -11,7 +11,7 @@
       register: database_instances
 
     - name: bring down all oracle instances
-      command: bring_down_instance
+      command: bring_down_instance "{{ item }}"
       with_items: "{{ database_instances.stdout }}"
 
     - name: remove softlink to HOME
@@ -24,8 +24,17 @@
         dst: /tmp
 
     - name: run installer command
-      command: /root/run_installer {{ ORACLE_HOME }}
+      command: /tmp/run_installer {{ ORACLE_HOME }}
 
   post_tasks:
     - name: run cat bundle
       command: cat_bundle
+
+    - name: is it running?
+      command: ps -ef  |gaeiflaks
+      register: oracle_process
+
+    - name: debug
+      debug:
+        msg: "update succesful"
+      when: "{{ oracle_process | success }}

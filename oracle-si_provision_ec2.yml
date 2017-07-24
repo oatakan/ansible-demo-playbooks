@@ -10,3 +10,6 @@
   tasks:
   - name: run my shell script after oracle
     command: hostname
+
+  - name: run my shell script after oracle
+    command: hostname
