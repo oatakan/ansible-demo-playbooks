@@ -8,4 +8,5 @@
         zone: public
         port: 9090/tcp
         permanent: true
+        immediate: yes
         state: enabled
