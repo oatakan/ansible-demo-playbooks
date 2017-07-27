@@ -1,0 +1,15 @@
+---
+- name: open firewall port
+  hosts: tag_app_SANANTONIO
+  become: yes
+  vars:
+    port: 80
+    protocol: tcp
+
+  tasks:
+  - name: open firewall port "{{ port }}"
+    firewalld:
+      port: "{{ port }}/{{ protocol }}"
+      permanent: true
+      state: enabled
+      immediate: yes
