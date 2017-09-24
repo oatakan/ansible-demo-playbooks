@@ -1,4 +1,13 @@
 <powershell>
+$admin = [adsi]("WinNT://./administrator, user")
+$admin.SetPassword("{{ ansible_password }}")
+$RegPath = "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon"
+$RegROPath = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce"
+Set-ItemProperty $RegPath "AutoAdminLogon" -Value "1" -type String
+Set-ItemProperty $RegPath "ForceAutoLogon" -Value "1" -type String
+Set-ItemProperty $RegPath "DefaultUsername" -Value "{{ ansible_hostname }}\Administrator" -type String
+Set-ItemProperty $RegPath "DefaultPassword" -Value "{{ ansible_password }}" -type String
+Set-ItemProperty $RegPath "AutoLogonCount" -Value "4" -type DWord
 Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force
 $storageDir = $pwd
 Enable-WSManCredSSP -Role Server -Force
@@ -8,10 +17,5 @@ $url = "https://raw.githubusercontent.com/ansible/ansible/devel/examples/scripts
 $file = "C:\Program Files\Amazon\Ec2ConfigService\Scripts\ConfigureRemotingForAnsible.ps1"
 $webclient.DownloadFile($url,$file)
 $VerbosePreference="Continue"
-$command = "C:\Program Files\Amazon\Ec2ConfigService\Scripts\ConfigureRemotingForAnsible.ps1 -ForceNewSSLCert -EnableCredSSP"
-Set-ExecutionPolicy Bypass -Force
-Unblock-File C:\Program Files\Amazon\Ec2ConfigService\Scripts\ConfigureRemotingForAnsible.ps1
-Invoke-Expression $command
-$admin = [adsi]("WinNT://./administrator, user")
-$admin.PSBase.Invoke("SetPassword", "{{ ansible_password }}")
+& $file
 </powershell>
