@@ -1,21 +1,14 @@
 <powershell>
-$admin = [adsi]("WinNT://./administrator, user")
-$admin.PSBase.Invoke("SetPassword", "{{ ansible_password }}")
-$RegPath = "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon"
-$RegROPath = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce"
-Set-ItemProperty $RegPath "AutoAdminLogon" -Value "1" -type String
-Set-ItemProperty $RegPath "ForceAutoLogon" -Value "1" -type String
-Set-ItemProperty $RegPath "DefaultUsername" -Value "{{ ansible_hostname }}\Administrator" -type String
-Set-ItemProperty $RegPath "DefaultPassword" -Value "{{ ansible_password }}" -type String
-Set-ItemProperty $RegPath "AutoLogonCount" -Value "4" -type DWord
-Set-ItemProperty $RegROPath -Name '!RunConfigureRemotingForAnsible' -Value "powershell.exe -ExecutionPolicy Unrestricted -File C:\ConfigureRemotingForAnsible.ps1 -ForceNewSSLCert -EnableCredSSP | Out-File c:\output2.txt"
-Enable-WSManCredSSP -Role Server -Force
-Set-Item -Path "WSMan:\localhost\Service\Auth\CredSSP" -Value $true
-(new-object system.net.webclient).DownloadFile('https://raw.githubusercontent.com/ansible/ansible/devel/examples/scripts/ConfigureRemotingForAnsible.ps1','C:\ConfigureRemotingForAnsible.ps1')
-$command = "C:\ConfigureRemotingForAnsible.ps1 -ForceNewSSLCert -EnableCredSSP"
-Set-ExecutionPolicy Bypass -Force
-Unblock-File C:\ConfigureRemotingForAnsible.ps1
-Invoke-Expression $command
-#$command2 = 'winrm set winrm/config/service/auth @{CredSSP="true"}'
-#Invoke-Expression $command2
+  Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force\n
+  $storageDir = $pwd\n
+  Enable-WSManCredSSP -Role Server -Force\n
+  Set-Item -Path "WSMan:\localhost\Service\Auth\CredSSP" -Value $true\n
+  $webclient = New-Object System.Net.WebClient\n
+  $url = \"https://raw.githubusercontent.com/ansible/ansible/devel/examples/scripts/ConfigureRemotingForAnsible.ps1\"\n
+  $file = \"C:\\Program Files\\Amazon\\Ec2ConfigService\\Scripts\\ConfigureRemotingForAnsible.ps1\"\n
+  $webclient.DownloadFile($url,$file)\n
+  $VerbosePreference=\"Continue\"\n
+  & $file\n
+  $user=[adsi]\"WinNT://localhost/Administrator,user\"\n
+  $user.SetPassword(\"{{ ansible_password }}\")\n
 </powershell>
