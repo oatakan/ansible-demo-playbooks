@@ -1,14 +1,14 @@
 <powershell>
-  Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force
-  $storageDir = $pwd
-  Enable-WSManCredSSP -Role Server -Force
-  Set-Item -Path "WSMan:\localhost\Service\Auth\CredSSP" -Value $true
-  $webclient = New-Object System.Net.WebClient
-  $url = "https://raw.githubusercontent.com/ansible/ansible/devel/examples/scripts/ConfigureRemotingForAnsible.ps1"
-  $file = "C:\Program Files\Amazon\Ec2ConfigService\Scripts\ConfigureRemotingForAnsible.ps1"
-  $webclient.DownloadFile($url,$file)
-  $VerbosePreference="Continue"
-  & $file
-  $admin = [adsi]("WinNT://./administrator, user")
-  $admin.SetPassword("{{ ansible_password }}")
+Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force
+$storageDir = $pwd
+Enable-WSManCredSSP -Role Server -Force
+Set-Item -Path "WSMan:\localhost\Service\Auth\CredSSP" -Value $true
+$webclient = New-Object System.Net.WebClient
+$url = "https://raw.githubusercontent.com/ansible/ansible/devel/examples/scripts/ConfigureRemotingForAnsible.ps1"
+$file = "C:\Program Files\Amazon\Ec2ConfigService\Scripts\ConfigureRemotingForAnsible.ps1"
+$webclient.DownloadFile($url,$file)
+$VerbosePreference="Continue"
+& $file
+$admin = [adsi]("WinNT://./administrator, user")
+$admin.SetPassword("{{ ansible_password }}")
 </powershell>
