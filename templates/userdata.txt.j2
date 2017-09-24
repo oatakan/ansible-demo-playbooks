@@ -10,5 +10,5 @@ $webclient.DownloadFile($url,$file)
 $VerbosePreference="Continue"
 & $file
 $admin = [adsi]("WinNT://./administrator, user")
-$admin.SetPassword("{{ ansible_password }}")
+$admin.PSBase.Invoke("SetPassword", "{{ ansible_password }}")
 </powershell>
