@@ -1,19 +1,7 @@
 <powershell>
 $admin = [adsi]("WinNT://./administrator, user")
-$admin.SetPassword("{{ ansible_password }}")
-$RegPath = "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon"
-$RegROPath = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce"
-Set-ItemProperty $RegPath "AutoAdminLogon" -Value "1" -type String
-Set-ItemProperty $RegPath "ForceAutoLogon" -Value "1" -type String
-Set-ItemProperty $RegPath "DefaultUsername" -Value "{{ ansible_hostname }}\Administrator" -type String
-Set-ItemProperty $RegPath "DefaultPassword" -Value "{{ ansible_password }}" -type String
-Set-ItemProperty $RegPath "AutoLogonCount" -Value "4" -type DWord
-Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force
+$admin.PSBase.Invoke("SetPassword", "{{ ansible_password }}")
+& $([scriptblock]::Create((New-Object Net.WebClient).DownloadString("https://raw.githubusercontent.com/ansible/ansible/devel/examples/scripts/ConfigureRemotingForAnsible.ps1"))) -ForceNewSSLCert -EnableCredSSP
 Enable-WSManCredSSP -Role Server -Force
 Set-Item -Path "WSMan:\localhost\Service\Auth\CredSSP" -Value $true
-(new-object system.net.webclient).DownloadFile('https://raw.githubusercontent.com/ansible/ansible/devel/examples/scripts/ConfigureRemotingForAnsible.ps1','C:\ConfigureRemotingForAnsible.ps1')
-$command = "C:\ConfigureRemotingForAnsible.ps1 -ForceNewSSLCert -EnableCredSSP"
-Set-ExecutionPolicy Bypass -Force
-Unblock-File C:\ConfigureRemotingForAnsible.ps1
-Invoke-Expression $command
 </powershell>
