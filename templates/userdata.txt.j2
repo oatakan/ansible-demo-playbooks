@@ -9,12 +9,11 @@ Set-ItemProperty $RegPath "DefaultPassword" -Value "{{ ansible_password }}" -typ
 Set-ItemProperty $RegPath "AutoLogonCount" -Value "3" -type DWord
 Enable-WSManCredSSP -Role Server -Force
 Set-Item -Path "WSMan:\localhost\Service\Auth\CredSSP" -Value $true
-Invoke-Expression ((New-Object System.Net.Webclient).DownloadString('https://raw.githubusercontent.com/ansible/ansible/devel/examples/scripts/ConfigureRemotingForAnsible.ps1'))
-#(new-object system.net.webclient).DownloadFile('https://raw.githubusercontent.com/ansible/ansible/devel/examples/scripts/ConfigureRemotingForAnsible.ps1','C:\ConfigureRemotingForAnsible.ps1')
-#$command = "C:\ConfigureRemotingForAnsible.ps1 -ForceNewSSLCert -EnableCredSSP"
-#Set-ExecutionPolicy Bypass -Force
-#Unblock-File C:\ConfigureRemotingForAnsible.ps1
-#Invoke-Expression $command
+(new-object system.net.webclient).DownloadFile('https://raw.githubusercontent.com/ansible/ansible/devel/examples/scripts/ConfigureRemotingForAnsible.ps1','C:\ConfigureRemotingForAnsible.ps1')
+$command = "C:\ConfigureRemotingForAnsible.ps1 -ForceNewSSLCert -EnableCredSSP"
+Set-ExecutionPolicy Bypass -Force
+Unblock-File C:\ConfigureRemotingForAnsible.ps1
+Invoke-Expression $command | Out-File c:\output.txt
 #$command2 = 'winrm set winrm/config/service/auth @{CredSSP="true"}'
 #Invoke-Expression $command2
 </powershell>
