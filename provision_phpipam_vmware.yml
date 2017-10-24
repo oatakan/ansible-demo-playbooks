@@ -1,7 +1,8 @@
 - hosts: all
   vars:
-    phpipam_install_from_git: true
-    phpipam_install_git_version: 'HEAD'
+    phpipam_install_from_git: false
+    phpipam_version: phpipam-1.1.010
+    #phpipam_install_git_version: 'HEAD'
     apache2_config: true
     apache2_config_php: true
     apache2_config_virtual_hosts: false
@@ -20,7 +21,17 @@
         state: present
       with_items:
         - git
+        - php-mbstring
+        - php-gd
   roles:
     - mrlesmithjr.apache2
     - ansible-mariadb-mysql
     - mrlesmithjr.phpipam
+
+  post_tasks:
+    - name: update admin password
+      mysql_user:
+        name: Admin
+        password: ipamadmin
+        priv: phpipam.*:ALL
+        state: present
