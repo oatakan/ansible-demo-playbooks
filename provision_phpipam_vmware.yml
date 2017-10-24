@@ -7,6 +7,12 @@
       yum:
         name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
         state: present
+    - name: install prereq packages
+      yum:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - git
   roles:
     - mrlesmithjr.apache2
     - ansible-mariadb-mysql
