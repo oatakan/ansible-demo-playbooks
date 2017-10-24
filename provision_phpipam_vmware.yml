@@ -4,5 +4,5 @@
     phpipam_install_git_version: 'HEAD'
   roles:
     - mrlesmithjr.apache2
-    - mrlesmithjr.mariadb-mysql
+    - ansible-mariadb-mysql
     - mrlesmithjr.phpipam
