@@ -1,0 +1,6 @@
+- hosts: localhost
+  become: no
+  vars_files:
+    - phpipam-nodes-vmware.yml
+  roles:
+    - ansible-role-vmware

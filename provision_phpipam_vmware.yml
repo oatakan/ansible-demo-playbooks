@@ -1,0 +1,8 @@
+- hosts: all
+  vars:
+    phpipam_install_from_git: true
+    phpipam_install_git_version: 'HEAD'
+  roles:
+    - mrlesmithjr.apache2
+    - mrlesmithjr.mariadb-mysql
+    - mrlesmithjr.phpipam
