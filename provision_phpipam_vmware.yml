@@ -2,6 +2,11 @@
   vars:
     phpipam_install_from_git: true
     phpipam_install_git_version: 'HEAD'
+  pre_tasks:
+    - name: install epel
+      yum:
+        name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+        state: present
   roles:
     - mrlesmithjr.apache2
     - ansible-mariadb-mysql
