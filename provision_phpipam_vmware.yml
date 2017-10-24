@@ -2,6 +2,8 @@
   vars:
     phpipam_install_from_git: false
     phpipam_version: phpipam-1.1.010
+    phpipam_download: 'https://downloads.sourceforge.net/project/phpipam/phpipam-1.1.010.tar?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fphpipam%2Ffiles%2F%3Fsource%3Dnavbar&ts=1508884410&use_mirror=cfhcable'
+    phpipam_download_file: '{{ phpipam_version }}.tar'
     #phpipam_install_git_version: 'HEAD'
     apache2_config: true
     apache2_config_php: true
