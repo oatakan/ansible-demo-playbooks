@@ -16,3 +16,4 @@
         permanent: true
         immediate: yes
         state: enabled
+      ignore_errors: yes
