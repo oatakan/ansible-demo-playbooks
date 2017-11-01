@@ -5,7 +5,7 @@ nodes:
     app_name: mssql-demo
     instance_type: t2.large
     #image: ami-e196b0f7 #windows 2012 r2
-    image: ami-f4d1f0e2 #windows 2016 base
+    image: ami-e3bb7399 #windows 2016 base
     volumes:
       - device_name: /dev/xvda
         volume_type: gp2
