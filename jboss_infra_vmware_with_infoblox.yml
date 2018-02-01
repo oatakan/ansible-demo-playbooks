@@ -1,7 +1,0 @@
-- hosts: localhost
-  become: no
-  pre_task:
-    - name: obtain hostname
-      include: obtain_hostname.yml
-  roles:
-    - ansible-role-vmware
