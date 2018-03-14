@@ -1,7 +1,7 @@
 - name: add tower inventory with variables
   tower_group:
     name: "{{ group_name }}"
-    description: "{{ group_name }}" k
+    description: "{{ group_name }}"
     inventory: "{{ inventory_name }}"
     state: present
     variables: "{{ group_variables }}"
