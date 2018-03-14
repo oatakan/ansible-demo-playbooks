@@ -3,6 +3,7 @@
     name: "{{ group_name }}"
     inventory: "{{ inventory_name }}"
     state: present
+    source: manual
     variables: "{{ group_variables }}"
     tower_host: "{{ tower_hostname }}"
     tower_username: "{{ tower_username }}"
