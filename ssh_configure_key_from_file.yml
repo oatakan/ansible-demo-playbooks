@@ -1,16 +1,18 @@
 ---
 - name: configure ssh on target systems
   hosts: all
-  vars:
-    tower_id_rsa_pub: ''
   tasks:
+    - name: copy ssh key from tower to target
+      copy:
+        src: /tmp/id_rsa.pub
+        dest: /tmp/id_rsa_tower.pub
+
     - name: add ssh key to authorized keys
       authorized_key:
         user: root
         state: present
         manage_dir: yes
-        key: "{{ tower_id_rsa_pub }}"
-      when: tower_id_rsa_pub defined
+        key: "{{ lookup('file', '/tmp/id_rsa_tower.pub') }}"
 
     - name: configure ssh
       template:
