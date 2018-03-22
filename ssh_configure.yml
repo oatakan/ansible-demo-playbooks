@@ -1,0 +1,26 @@
+---
+- name: configure ssh on target systems
+  hosts: all
+  tasks:
+    - name: copy ssh key from tower to target
+      copy:
+        src: /tmp/id_rsa.pub
+        dest: /tmp/id_rsa_tower.pub
+    - name: add ssh key to authorized keys
+      authorized_key:
+        user: root
+        state: present
+        manage_dir: yes
+        key: "{{ lookup('file', '/tmp/id_rsa_tower.pub') }}"
+    - name: configure ssh
+      template:
+        src: sshd_config.j2
+        dest: /etc/ssh/sshd_config
+        owner: root
+        mode: '0600'
+        validate: /usr/sbin/sshd -t -f %s
+        backup: yes
+    - name: restart ssh service
+      service:
+        name: sshd
+        state: restarted

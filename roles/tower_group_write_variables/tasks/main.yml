@@ -1,11 +1,21 @@
-- name: add tower inventory with variables
-  tower_group:
-    name: "{{ group_name }}"
-    description: "{{ group_name }}"
-    inventory: "{{ inventory_name }}"
-    state: present
-    variables: "{{ group_variables }}"
-    tower_host: "{{ tower_hostname }}"
-    tower_username: "{{ tower_username }}"
-    tower_password: "{{ tower_password }}"
-  delegate_to: 127.0.0.1
+- name: get tower group name
+  shell: tower-cli group list -n "{{ group_name }}" -i "{{ inventory_name }}" -f yaml
+  register: group_details
+
+- name: show group id
+    msg: "{{ group_details.stdout.id }}"
+
+- #name: add tower inventory with variables
+  #tower_group:
+  #  name: "{{ group_name }}"
+  #  description: "{{ group_name }}"
+  #  inventory: "{{ inventory_name }}"
+  #  state: present
+  #  variables: "{{ group_variables }}"
+  #  tower_host: "{{ tower_hostname }}"
+  #  tower_username: "{{ tower_username }}"
+  #  tower_password: "{{ tower_password }}"
+  #delegate_to: 127.0.0.1
+
+- name: add variables to tower
+  shell: tower-cli group modify "{{ group_details.stdout.id }}"
