@@ -10,7 +10,7 @@
         state: present
         manage_dir: yes
         key: "{{ tower_id_rsa_pub }}"
-      when: tower_id_rsa_pub defined
+      when: tower_id_rsa_pub is defined
 
     - name: configure ssh
       template:
