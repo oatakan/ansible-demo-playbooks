@@ -22,6 +22,6 @@ nodes:
     - 8.8.4.4
     memory: 4096
     cpu: 2
-    template: centos74-x64-bigdisk
+    template: windows-2016
     snapshot_src: Linked
     linked_clone: True
