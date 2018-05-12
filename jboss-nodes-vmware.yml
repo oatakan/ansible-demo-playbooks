@@ -25,8 +25,8 @@ nodes:
       dns_servers:
       - 192.168.1.254
       - 8.8.4.4
-    memory: 4096
+    memory: 8192
     cpu: 2
-    template: centos73-x64-bigdisk
+    template: centos74-x64-bigdisk
     snapshot_src: Linked
     linked_clone: True
