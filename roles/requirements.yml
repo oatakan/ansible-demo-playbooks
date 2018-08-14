@@ -24,9 +24,9 @@
 
 #- src: geerlingguy.postgresql
 
-#- src: mrlesmithjr.phpipam
+- src: mrlesmithjr.phpipam
 
-#- src: mrlesmithjr.apache2
+- src: mrlesmithjr.apache2
 
 - src: mrlesmithjr.mariadb-mysql
 
