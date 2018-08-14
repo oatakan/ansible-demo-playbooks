@@ -1,6 +1,6 @@
 - hosts: all
   roles:
-  - { role: while-true-do.cockpit, cockpit_packages: [ 'cockpit' ] }
+  - { role: while_true_do.cockpit, cockpit_packages: [ 'cockpit' ] }
 
   post_tasks:
     - name: enable and start cockpit
