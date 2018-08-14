@@ -20,7 +20,7 @@
 
 - src: geerlingguy.haproxy
 
-#- src: while-true-do.cockpit
+- src: while-true-do.cockpit
 
 - src: geerlingguy.postgresql
 
