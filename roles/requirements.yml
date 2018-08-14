@@ -14,9 +14,9 @@
   version: origin/master
   name: ansible-oracle
 
-#- src: geerlingguy.nginx
+- src: geerlingguy.nginx
 
-#- src: geerlingguy.mysql
+- src: geerlingguy.mysql
 
 - src: geerlingguy.haproxy
 
