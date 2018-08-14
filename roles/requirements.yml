@@ -28,9 +28,9 @@
 
 #- src: mrlesmithjr.apache2
 
-#- src: mrlesmithjr.mariadb-mysql
+- src: mrlesmithjr.mariadb-mysql
 
-#- src: https://github.com/oatakan/ansible-mariadb-mysql
+- src: https://github.com/oatakan/ansible-mariadb-mysql
   version: origin/master
 
 - src: oatakan.tower-inventory-read-variable
