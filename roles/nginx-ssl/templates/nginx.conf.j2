@@ -30,6 +30,6 @@ http {
         include /etc/nginx/conf.d/{{config}}.conf;
     {%- endfor %}
 
-    include /etc/nginx/sites-enabled.d/*.conf;
+    include /etc/nginx/conf.d/*.conf;
 }
 
