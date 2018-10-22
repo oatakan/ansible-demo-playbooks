@@ -1,5 +1,6 @@
 - hosts: all
   roles:
+    - nginx-ssl
     - joe-speedboat.ansible_mariadb
     - role: joe-speedboat.ansible_guacamole
       mariadb_db_host: 'localhost'
