@@ -40,3 +40,7 @@
 - src: joe-speedboat.ansible_mariadb
 
 - src: joe-speedboat.ansible_guacamole
+
+- src: geerlingguy.repo-epel
+
+- src: geerlingguy.certbot

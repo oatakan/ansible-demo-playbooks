@@ -9,8 +9,8 @@ server {
 # the secure nginx server instance
 server {
     listen 443 ssl;
-    ssl_certificate     /etc/letsencrypt/live/localhost/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/localhost/privkey.pem;
+    ssl_certificate     /etc/letsencrypt/live/{{ ansible_fqdn }}/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/{{ ansible_fqdn }}/privkey.pem;
     ssl_protocols       TLSv1.1 TLSv1.2;
     ssl_ciphers         HIGH:!aNULL:!MD5;
 
