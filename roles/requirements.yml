@@ -14,6 +14,12 @@
   version: origin/master
   name: ansible-oracle
 
+- src: https://github.com/oatakan/ansible.mariadb
+  version: origin/master
+
+- src: https://github.com/oatakan/ansible.guacamole
+  version: origin/master
+
 - src: geerlingguy.nginx
 
 - src: geerlingguy.mysql
@@ -36,10 +42,6 @@
 - src: oatakan.tower-inventory-read-variable
 
 - src: oatakan.tower-inventory-write-variable
-
-- src: joe-speedboat.ansible_mariadb
-
-- src: joe-speedboat.ansible_guacamole
 
 - src: geerlingguy.repo-epel
 
