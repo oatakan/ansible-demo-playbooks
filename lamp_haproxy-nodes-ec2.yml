@@ -7,9 +7,9 @@ nodes:
     image: ami-bc8131d4 #rhel6
     volumes:
       - device_name: /dev/sda1
-        volume_type: gp2
-        volume_size: 10
-        delete_on_termination: true
+        ebs:
+          volume_size: 10
+          delete_on_termination: true
   - name: web1
     role: webservers
     app_name: lamp_haproxy
@@ -17,9 +17,9 @@ nodes:
     image: ami-bc8131d4 #rhel6
     volumes:
       - device_name: /dev/sda1
-        volume_type: gp2
-        volume_size: 10
-        delete_on_termination: true
+        ebs:
+          volume_size: 10
+          delete_on_termination: true
   - name: web2
     role: webservers
     app_name: lamp_haproxy
@@ -27,9 +27,9 @@ nodes:
     image: ami-bc8131d4 #rhel6
     volumes:
       - device_name: /dev/sda1
-        volume_type: gp2
-        volume_size: 10
-        delete_on_termination: true
+        ebs:
+          volume_size: 10
+          delete_on_termination: true
   - name: web3
     role: webservers
     app_name: lamp_haproxy
@@ -37,9 +37,9 @@ nodes:
     image: ami-bc8131d4 #rhel6
     volumes:
       - device_name: /dev/sda1
-        volume_type: gp2
-        volume_size: 10
-        delete_on_termination: true
+        ebs:
+          volume_size: 10
+          delete_on_termination: true
   - name: haproxy
     role: lbservers
     app_name: lamp_haproxy
@@ -47,9 +47,9 @@ nodes:
     image: ami-bc8131d4 #rhel6
     volumes:
       - device_name: /dev/sda1
-        volume_type: gp2
-        volume_size: 10
-        delete_on_termination: true
+        ebs:
+          volume_size: 10
+          delete_on_termination: true
   - name: nagios
     role: monitoring
     app_name: lamp_haproxy
@@ -57,6 +57,6 @@ nodes:
     image: ami-bc8131d4 #rhel6
     volumes:
       - device_name: /dev/sda1
-        volume_type: gp2
-        volume_size: 10
-        delete_on_termination: true
+        ebs:
+          volume_size: 10
+          delete_on_termination: true
