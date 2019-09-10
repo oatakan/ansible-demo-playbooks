@@ -3,8 +3,8 @@
     - geerlingguy.repo-epel
     - geerlingguy.certbot
     - nginx-ssl
-    - joe-speedboat.ansible_mariadb
-    - role: joe-speedboat.ansible_guacamole
+    - ansible.mariadb
+    - role: ansible.guacamole
       mariadb_db_host: 'localhost'
       mariadb_db_name: 'guacamole'
       mariadb_db_user: 'guacamole'
