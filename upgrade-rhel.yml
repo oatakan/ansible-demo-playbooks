@@ -23,5 +23,5 @@
           - rhel-8-for-x86_64-appstream-rpms
       when: ansible_os_family == 'RedHat' and ansible_distribution_major_version|int == 8
   roles:
-    - ansible-role-rhn
-    - ansible-role-rhel-upgrade
+    - oatakan.rhn
+    - oatakan.rhel_upgrade
