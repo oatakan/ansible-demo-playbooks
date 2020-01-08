@@ -1,4 +1,5 @@
 - hosts: all
+  become: yes
   pre_tasks:
     - debug:
         var: rhn_username
