@@ -1,12 +1,6 @@
 - hosts: all
   become: yes
-  pre_tasks:
-    - debug:
-        var: rhn_username
-
-    - debug:
-        var: rhn_subscription
-
+  tasks:
     - name: set repos for 7.x
       set_fact:
         repo_channels:
@@ -23,6 +17,21 @@
           - rhel-8-for-x86_64-supplementary-rpms
           - rhel-8-for-x86_64-appstream-rpms
       when: ansible_os_family == 'RedHat' and ansible_distribution_major_version|int == 8
-  roles:
-    - oatakan.rhn
-    - oatakan.rhel_upgrade
+
+    - block:
+        - include_role:
+            name: "{{ role_name }}"
+          loop_control:
+            loop_var: role_name
+          loop:
+            - oatakan.rhn
+            - oatakan.rhel_upgrade
+
+      always:
+
+        - include_role:
+            name: oatakan.rhn
+          vars:
+            role_action: unregister
+
+      when: ansible_distribution == 'RedHat'
