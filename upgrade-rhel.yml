@@ -33,5 +33,3 @@
             name: oatakan.rhn
           vars:
             role_action: unregister
-
-      when: ansible_distribution == 'RedHat'
