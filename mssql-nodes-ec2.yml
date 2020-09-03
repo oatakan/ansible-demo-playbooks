@@ -4,7 +4,7 @@ nodes:
     role: mssql-on-windows
     app_name: mssql-demo
     instance_type: t3.medium
-    image: ami-02d43577e47e684d9 # windows 2019 full
+    image: "{{ win2019_ami_id|default('ami-0105e6d241a21e66f') }}" #windows 2019
     #image: ami-013e197b #windows 2012 r2
     #image: ami-603b1c1a #windows 2016 base
 #    volumes:
