@@ -6,4 +6,5 @@
   vars_files:
     - mssql-nodes-ec2.yml
   roles:
+    - ec2-find-amis
     - ansible-role-ec2
