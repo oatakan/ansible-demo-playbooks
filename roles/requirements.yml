@@ -28,8 +28,6 @@
 
 - src: geerlingguy.haproxy
 
-- src: while_true_do.srv_cockpit
-
 - src: geerlingguy.postgresql
 
 - src: mrlesmithjr.phpipam
