@@ -1,3 +1,19 @@
+- name: remove ec2 instance
+  hosts: all
+  gather_facts: false
+  connection: local
+  vars:
+    ansible_ssh_password: ''
+  become: no
+  vars_files:
+    - mssql-nodes-ec2.yml
+
+  roles:
+    - role: ansible-role-ec2
+      role_action: deprovision
+      delegate_to: localhost
+      run_once: yes
+
 - hosts: localhost
   become: no
   tasks:
